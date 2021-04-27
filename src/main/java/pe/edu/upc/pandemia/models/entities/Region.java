@@ -23,12 +23,21 @@ public class Region {
 	@Column(name = "region_name", length = 25)
 	private String name;
 
-	@OneToMany(mappedBy = "region", fetch = FetchType.LAZY)
-	private List<Country> countries;
+	// @OneToMany(mappedBy = "region", fetch = FetchType.LAZY)
+	// private List<Country> countries;
 
-	// -- Constructor, Getter y Setter
+	// -- Constructor, Getter & Setter
+	// public Region() {
+	// countries = new ArrayList<Country>();
+	// }
+
 	public Region() {
-		countries = new ArrayList<Country>();
+		super();
+	}
+
+	public Region(Integer id, String name) {
+		this.name = name;
+		this.id = id;
 	}
 
 	public Integer getId() {
@@ -47,12 +56,12 @@ public class Region {
 		this.name = name;
 	}
 
-	public List<Country> getContries() {
-		return countries;
-	}
+	// public List<Country> getContries() {
+	// return countries;
+	// }
 
-	public void setContries(List<Country> contries) {
-		this.countries = contries;
-	}
+	// public void setContries(List<Country> countries) {
+	// this.countries = countries;
+	// }
 
 }

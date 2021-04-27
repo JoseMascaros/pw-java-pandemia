@@ -22,9 +22,9 @@ public class Country {
 	@Column(name = "country_name", length = 40)
 	private String name;
 
-	@ManyToOne
-	@JoinColumn(name = "region_id", nullable = false) // Foreing Key
-	private Region region; // Region_Id
+	//@ManyToOne
+	//@JoinColumn(name = "region_id", nullable = false) // Foreing Key
+	//private Region region; // Region_Id
 
 	@OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
 	private List<Location> locations;
@@ -50,13 +50,13 @@ public class Country {
 		this.name = name;
 	}
 
-	public Region getRegion() {
-		return region;
-	}
+	//public Region getRegion() {
+		//return region;
+	//}
 
-	public void setRegion(Region region) {
-		this.region = region;
-	}
+	//public void setRegion(Region region) {
+		//this.region = region;
+	//}
 
 	public List<Location> getLocations() {
 		return locations;

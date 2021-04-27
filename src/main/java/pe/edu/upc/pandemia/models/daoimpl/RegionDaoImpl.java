@@ -23,7 +23,7 @@ public class RegionDaoImpl implements IRegionDao {
 			em.persist(reg);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println("Error al insertar Region en el dao");
+			System.out.println("Error at insert Region in dao");
 		}
 	}
 
