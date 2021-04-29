@@ -8,11 +8,11 @@
 
 
 	<ui:define name="title">
-        .:Listado de Regiones:.
+        .:Region List:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Listado de Regiones </span>
+		<span>Region List </span>
 	</ui:define>
 
 	<ui:define name="content">
@@ -22,7 +22,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="form-group">
-						<p:commandButton value="Nuevo"
+						<p:commandButton value="New"
 							action="#{regionController.newRegion()}"
 							styleClass="btn btn-danger" ajax="false" />
 					</div>
@@ -37,21 +37,21 @@
 							value="#{regionController.regionList}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
-							emptyMessage="No existen registros" rowIndexVar="item"
+							emptyMessage="Empty table" rowIndexVar="item"
 							style="margin-bottom:0">
 
 
-							<p:column headerText="Código">
+							<p:column headerText="Code">
 								<h:outputText value="#{reg.id}" />
 							</p:column>
 
 
-							<p:column headerText="Región">
+							<p:column headerText="Region">
 								<h:outputText value="#{reg.name}" />
 							</p:column>
 
 
-							<p:column headerText="Operación">
+							<p:column headerText="Operations">
 								<h:commandLink action="lstRegion" value="Eliminar"
 									actionListener="#{regionController.delete(reg)}" />
 							</p:column>
