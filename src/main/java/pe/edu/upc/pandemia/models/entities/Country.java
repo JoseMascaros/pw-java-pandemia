@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,29 +18,31 @@ import javax.persistence.Table;
 @Table(name = "Countries")
 public class Country {
 	@Id
-	@Column(name = "country_id", length = 2, nullable = false)
-	private String id;
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "country_id")
+	private Integer id;
 
 	@Column(name = "country_name", length = 40)
 	private String name;
 
-	//@ManyToOne
-	//@JoinColumn(name = "region_id", nullable = false) // Foreing Key
-	//private Region region; // Region_Id
+	@ManyToOne
+	@JoinColumn(name = "region_id", nullable = false) // Foreign Key
+	private Region region; // Region_Id
 
-	@OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-	private List<Location> locations;
+	//@OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
+	//private List<Location> locations;
 
 	// -- Constructor, Getter y Setter
 	public Country() {
-		locations = new ArrayList<Location>();
+		super();
+		//locations = new ArrayList<Location>();
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -50,20 +54,20 @@ public class Country {
 		this.name = name;
 	}
 
-	//public Region getRegion() {
-		//return region;
-	//}
-
-	//public void setRegion(Region region) {
-		//this.region = region;
-	//}
-
-	public List<Location> getLocations() {
-		return locations;
+	public Region getRegion() {
+		return region;
 	}
 
-	public void setLocations(List<Location> locations) {
-		this.locations = locations;
+	public void setRegion(Region region) {
+		this.region = region;
 	}
+
+	//public List<Location> getLocations() {
+		//return locations;
+	//}
+
+	//public void setLocations(List<Location> locations) {
+		//this.locations = locations;
+	//}
 
 }

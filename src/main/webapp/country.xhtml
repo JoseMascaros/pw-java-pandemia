@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Country Registration:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>.:Country Registration:.</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		
+			<h:outputLabel for="idCountry" value="Id " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="idCountry"
+				styleClass="form-control" value="#{countryController.country.id}" />
+
+			<h:outputLabel for="nameCountry" value="Country "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nameCountry"
+				styleClass="form-control" value="#{countryController.country.name}"
+				maxlength="30" required="true" />
+				
+			<br />
+
+			<p:outputLabel for="cboRegion" value="Region" />
+			<p:selectOneMenu id="cboRegion"
+				value="#{countryController.country.region}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{countryController.regionList}" var="r"
+					itemLabel="#{r.name}" itemValue="#{r}" />
+			</p:selectOneMenu>
+			<br />
+
+			<p:commandButton value="Save"
+				actionListener="#{countryController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listCountry?faces-redirect=true" />
+
+			<p:commandButton value="Cancel"
+				action="listCountry?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

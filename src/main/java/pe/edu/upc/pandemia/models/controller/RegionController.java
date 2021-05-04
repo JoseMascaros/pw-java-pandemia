@@ -19,7 +19,6 @@ public class RegionController {
 	private IRegionService rService;
 
 	private Region region;
-
 	List<Region> regionList;
 
 	// Constructor
@@ -71,6 +70,10 @@ public class RegionController {
 		}catch(Exception e) {
 			System.out.println("Error at list in RegionController");
 		}
+	}
+	
+	public void clear() {
+		this.init();
 	}
 
 	// Getter & Setter

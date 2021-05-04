@@ -57,6 +57,7 @@ public class RegionDaoImpl implements IRegionDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Region> findByName(Region reg) {
 		List<Region> list = new ArrayList<Region>();

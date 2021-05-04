@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Countries:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Country List </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<p:commandButton value="New"
+							action="#{countryController.newCountry()}"
+							styleClass="btn btn-primary" ajax="false" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstCountry" var="c"
+							value="#{countryController.countryList}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{c.id}">
+								<h:outputText value="#{c.id}" />
+							</p:column>
+
+							<p:column headerText="Name" sortBy="#{c.name}">
+								<h:outputText value="#{c.name}" />
+							</p:column>
+
+							<p:column headerText="Region" sortBy="#{c.region.name}">
+								<h:outputText value="#{c.region.name}" />
+							</p:column>
+							<p:column headerText="Operations" exportable="false">
+								<h:commandLink action="lstCountry" value="Delete"
+									actionListener="#{countryController.delete(c)}"></h:commandLink>
+							</p:column>
+
+
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
