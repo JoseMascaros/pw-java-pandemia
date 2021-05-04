@@ -60,6 +60,18 @@ public class RegionController {
 			System.out.println("Error at delete in RegionController");
 		}
 	}
+	
+	public void findByName() {
+		try {
+			if(region.getName().isEmpty()) {
+				this.list();
+			}else {
+				regionList = rService.findByName(this.region);
+			}
+		}catch(Exception e) {
+			System.out.println("Error at list in RegionController");
+		}
+	}
 
 	// Getter & Setter
 	public Region getRegion() {

@@ -57,4 +57,19 @@ public class RegionDaoImpl implements IRegionDao {
 
 	}
 
+	@Override
+	public List<Region> findByName(Region reg) {
+		List<Region> list = new ArrayList<Region>();
+
+		try {
+			Query q = em.createQuery("from Region r where r.name like ?1");
+			q.setParameter(1, "%" + reg.getName() + "%");
+			list = (List<Region>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return list;
+	}
+
 }

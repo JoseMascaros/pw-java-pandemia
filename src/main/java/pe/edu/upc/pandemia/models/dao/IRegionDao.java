@@ -11,4 +11,6 @@ public interface IRegionDao {
 	public List<Region> list();
 
 	public void delete(Integer region_id);
+	
+	public List<Region> findByName(Region reg);
 }
